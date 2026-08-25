@@ -10,9 +10,44 @@
 PC installed with SCILAB. 
 
 # PROGRAM: 
-
+```
+clc;
+close;
+wp=input('Enter the pass band frequency (Radians) = ');
+ws=input('Enter the stop band frequency (Radians) = ');
+alphap=input('Enter the pass band attenuation (dB) = ');
+alphas=input('Enter the stop band attenuation (dB) = ');
+T=input('Enter the value of sampling time = ');
+omegap=(2/T)*tan(wp/2);
+disp(omegap,'omegap = ');
+omegas=(2/T)*tan(ws/2);
+disp(omegas,'omegas = ');
+N=acosh(sqrt(((10^(0.1*alphas))-1)/((10^(0.1*alphap))-1)))/(acosh(omegas/omegap));
+disp(N,'N = ');
+N=ceil(N);
+disp(N,'Round off value of N = ');
+omegac=omegap/(((10^(0.1*alphap))-1)^(1/(2*N)));
+disp(omegac,'omegac = ');
+Epsilon=sqrt((10^(0.1*alphap))-1);
+disp(Epsilon,'Epsilon = ');
+[pols,gn]=zpch1(N,Epsilon,omegap);
+disp(gn,'Gain');
+disp(pols,'Poles');
+hs=poly(gn,'s','coeff')/real(poly(pols,'s'));
+disp(hs,'Analog Low Pass Chebyshev Filter Transfer Function');
+z=poly(0,'z');
+Hz=horner(hs,(2/T)*((z-1)/(z+1)));
+disp(Hz,'Digital LPF Transfer Function H(Z) = ');
+HW=frmag(Hz,512);
+w=0:%pi/511:%pi;
+plot(w/%pi,abs(HW));
+xlabel('Normalized Digital Frequency w');
+ylabel('Magnitude');
+title('Frequency Response of Chebyshev IIR LPF');
+```
 
 # OUTPUT: 
+<img width="707" height="552" alt="image" src="https://github.com/user-attachments/assets/900d7698-b6f0-4d1f-a31c-2a76c9102402" />
 
 
 # RESULT: 
