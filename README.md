@@ -47,9 +47,15 @@ title('Frequency Response of Chebyshev IIR LPF');
 ```
 
 # OUTPUT: 
+
 <img width="707" height="552" alt="image" src="https://github.com/user-attachments/assets/900d7698-b6f0-4d1f-a31c-2a76c9102402" />
+<img width="847" height="867" alt="image" src="https://github.com/user-attachments/assets/d4a52a61-a1e4-4ddf-8781-7eef95648a8a" />
+<img width="788" height="1403" alt="image" src="https://github.com/user-attachments/assets/632e1a4d-8e74-4e77-868f-ddbe609ab255" />
+<img width="780" height="1371" alt="image" src="https://github.com/user-attachments/assets/b9bfc5eb-4398-4381-8dbd-6e34cd1cec4a" />
+<img width="1157" height="1600" alt="image" src="https://github.com/user-attachments/assets/475d5361-c232-4e27-8447-55433492090b" />
 
 
 # RESULT: 
+
 Thus design of Chebyshev Low pass IIR filter waveforms were plotted and output was
 verified.
